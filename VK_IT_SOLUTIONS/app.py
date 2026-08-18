@@ -727,6 +727,10 @@ def initialize_database():
             raise RuntimeError("Database contains more than one owner. Manual correction is required.")
 
 
+# Run initialization for both local script execution and WSGI deployments.
+# In production hosting, the module is usually imported instead of executed,
+# so the database must be created during import as well.
+initialize_database()
+
 if __name__ == "__main__":
-    initialize_database()
     app.run(host="127.0.0.1", port=5000, debug=os.getenv("FLASK_DEBUG", "false").lower() == "true")

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Create Task{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>MANAGER PANEL</h3><a href="{{ url_for('manager_dashboard') }}">Dashboard</a><a class="active" href="{{ url_for('manager_employees') }}">Employees</a></aside>
+<section class="dashboard-main"><div class="form-card"><h1>Create Task</h1><p>Assign a task to <strong>{{ employee.name }}</strong>.</p><form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><label>Task Title<input name="title" required></label><label>Description<textarea name="description" rows="5"></textarea></label><label>Due Date<input type="date" name="due_date"></label><button class="btn primary">Create Task</button></form></div></section></div>
+{% endblock %}

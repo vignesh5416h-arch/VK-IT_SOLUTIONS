@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Manager Profile{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>MANAGER PANEL</h3><a href="{{ url_for('manager_dashboard') }}">Dashboard</a><a href="{{ url_for('manager_employees') }}">Employees</a><a class="active" href="{{ url_for('manager_profile') }}">My Profile</a></aside>
+<section class="dashboard-main"><div class="form-card"><h1>My Profile</h1><form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><div class="form-grid"><label>Full Name<input name="name" value="{{ manager.name }}" required></label><label>Gmail<input value="{{ manager.email }}" disabled></label><label>Phone<input name="phone" value="{{ manager.phone or '' }}"></label><label>Department<input name="department" value="{{ manager.department or '' }}"></label><label>Designation<input name="designation" value="{{ manager.designation or '' }}"></label></div><button class="btn primary">Save Profile</button></form></div></section></div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}VK IT SOLUTIONS | Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">SMART • SECURE • SCALABLE</span>
+      <h1>Manage people, work and growth with <span>VK IT SOLUTIONS.</span></h1>
+      <p>A modern role-based management platform connecting Owners, Managers and Employees in one secure workspace.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="{{ url_for('owner_login') }}">Owner Portal</a>
+        <a class="btn secondary" href="{{ url_for('services') }}">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="floating-card"><strong>3 Roles</strong><small>Owner • Manager • Employee</small></div>
+      <div class="floating-card"><strong>Secure Auth</strong><small>Hashed passwords + sessions</small></div>
+      <div class="floating-card"><strong>SQLite</strong><small>Reliable local data storage</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">WHY VK IT SOLUTIONS</span><h2>Built for clear control and productive teams.</h2></div>
+    <div class="card-grid three">
+      <article class="info-card"><span class="icon">◈</span><h3>Role-Based Access</h3><p>Each user sees and uses only the functions permitted by their role.</p></article>
+      <article class="info-card"><span class="icon">✓</span><h3>Secure Accounts</h3><p>Passwords are stored with secure Werkzeug password hashing.</p></article>
+      <article class="info-card"><span class="icon">↗</span><h3>Responsive Design</h3><p>A professional interface for desktop, tablet and mobile devices.</p></article>
+    </div>
+  </div>
+</section>
+{% endblock %}

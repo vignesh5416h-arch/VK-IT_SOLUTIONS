@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}My Tasks{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>EMPLOYEE PANEL</h3><a href="{{ url_for('employee_dashboard') }}">Dashboard</a><a class="active" href="{{ url_for('employee_tasks') }}">My Tasks</a><a href="{{ url_for('employee_profile') }}">My Profile</a></aside>
+<section class="dashboard-main"><h1>My Tasks</h1><p>Update only the status of tasks assigned to you.</p><div class="table-wrap"><table><thead><tr><th>Task</th><th>Manager</th><th>Due Date</th><th>Update Status</th></tr></thead><tbody>
+{% for t in tasks %}<tr><td><strong>{{ t.title }}</strong><small>{{ t.description or '' }}</small></td><td>{{ t.manager.name }}</td><td>{{ t.due_date or '—' }}</td><td><form method="post" action="{{ url_for('employee_update_task', task_id=t.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><select name="status"><option value="pending" {% if t.status=='pending' %}selected{% endif %}>Pending</option><option value="in_progress" {% if t.status=='in_progress' %}selected{% endif %}>In Progress</option><option value="completed" {% if t.status=='completed' %}selected{% endif %}>Completed</option></select><button class="btn small">Update</button></form></td></tr>
+{% else %}<tr><td colspan="4" class="empty">No tasks assigned.</td></tr>{% endfor %}</tbody></table></div></section></div>
+{% endblock %}

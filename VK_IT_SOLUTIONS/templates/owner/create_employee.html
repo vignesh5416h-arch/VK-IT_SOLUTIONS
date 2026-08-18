@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Create Employee{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>OWNER PANEL</h3><a href="{{ url_for('owner_dashboard') }}">Dashboard</a><a href="{{ url_for('owner_managers') }}">Managers</a><a href="{{ url_for('create_manager') }}">Create Manager</a><a class="active" href="{{ url_for('create_employee') }}">Create Employee</a><a href="{{ url_for('owner_employees') }}">Employees</a></aside>
+<section class="dashboard-main"><div class="form-card"><h1>Create Employee</h1><p>Employees must be assigned to an active manager.</p>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><div class="form-grid">
+<label>Full Name<input name="name" required></label><label>Gmail Address<input type="email" name="email" placeholder="employee@gmail.com" required></label>
+<label>Password<input type="password" name="password" minlength="8" required></label><label>Confirm Password<input type="password" name="confirm_password" minlength="8" required></label>
+<label>Phone Number<input name="phone"></label><label>Department<input name="department"></label><label>Designation<input name="designation"></label>
+<label>Assign Manager<select name="manager_id" required><option value="">Select manager</option>{% for m in managers %}<option value="{{ m.id }}">{{ m.name }} — {{ m.department or 'General' }}</option>{% endfor %}</select></label>
+</div><button class="btn primary" type="submit">Create Employee</button></form></div></section></div>
+{% endblock %}

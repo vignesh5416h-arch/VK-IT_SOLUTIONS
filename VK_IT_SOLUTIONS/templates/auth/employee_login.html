@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ role|capitalize }} Login | VK IT SOLUTIONS{% endblock %}
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <div class="auth-brand"><span class="brand-mark">VK</span><h1>{{ role|capitalize }} Login</h1></div>
+    <p class="muted">Sign in with your Gmail account.</p>
+    <form method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label>Gmail Address<input type="email" name="email" placeholder="user@gmail.com" required autocomplete="username"></label>
+      <label>Password<input type="password" name="password" required autocomplete="current-password"></label>
+      <button class="btn primary full" type="submit">Sign In</button>
+    </form>
+    <div class="auth-links">
+      {% if role != 'owner' %}<a href="{{ url_for('owner_login') }}">Owner Login</a>{% endif %}
+      {% if role != 'manager' %}<a href="{{ url_for('manager_login') }}">Manager Login</a>{% endif %}
+      {% if role != 'employee' %}<a href="{{ url_for('employee_login') }}">Employee Login</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

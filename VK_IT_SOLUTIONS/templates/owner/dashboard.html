@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Owner Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-shell">
+  <aside class="sidebar">
+    <h3>OWNER PANEL</h3>
+    <a class="active" href="{{ url_for('owner_dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('owner_managers') }}">Managers</a>
+    <a href="{{ url_for('create_manager') }}">Create Manager</a>
+    <a href="{{ url_for('owner_employees') }}">Employees</a>
+    <a href="{{ url_for('create_employee') }}">Create Employee</a>
+  <a href="{{ url_for('owner_attendance') }}">Attendance</a><a href="{{ url_for('owner_payroll') }}">Payroll</a><a href="{{ url_for('owner_leaves') }}">Leave Management</a><a href="{{ url_for('owner_reports') }}">Reports</a></aside>
+  <section class="dashboard-main">
+    <div class="dash-head"><div><span class="eyebrow">CONTROL CENTER</span><h1>Owner Dashboard</h1><p>Complete organization overview.</p></div></div>
+    <div class="stats-grid">
+      <div class="stat-card"><span>Total Managers</span><strong>{{ managers }}</strong></div>
+      <div class="stat-card"><span>Total Employees</span><strong>{{ employees }}</strong></div>
+      <div class="stat-card"><span>Active Users</span><strong>{{ active_users }}</strong></div>
+      <div class="stat-card"><span>Total Tasks</span><strong>{{ tasks }}</strong></div>
+    </div>
+    <div class="card-grid two">
+      <a class="action-card" href="{{ url_for('create_manager') }}"><strong>＋ Create Manager</strong><span>Add a manager account.</span></a>
+      <a class="action-card" href="{{ url_for('create_employee') }}"><strong>＋ Create Employee</strong><span>Add and assign an employee.</span></a>
+      <a class="action-card" href="{{ url_for('owner_managers') }}"><strong>◉ View Managers</strong><span>Search and manage managers.</span></a>
+      <a class="action-card" href="{{ url_for('owner_employees') }}"><strong>◉ View Employees</strong><span>Search, edit and assign employees.</span></a>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}My Employees{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>MANAGER PANEL</h3><a href="{{ url_for('manager_dashboard') }}">Dashboard</a><a class="active" href="{{ url_for('manager_employees') }}">Employees</a><a href="{{ url_for('manager_profile') }}">My Profile</a></aside>
+<section class="dashboard-main"><h1>Assigned Employees</h1><p>You can manage task work for employees assigned to you.</p>
+<div class="card-grid two">{% for e in employees %}<div class="profile-card"><div class="avatar">{{ e.name[:1]|upper }}</div><h3>{{ e.name }}</h3><p>{{ e.designation or 'Employee' }} · {{ e.department or 'General' }}</p><p>{{ e.email }}</p><a class="btn secondary" href="{{ url_for('manager_create_task', employee_id=e.id) }}">Create Task</a></div>{% else %}<div class="empty">No assigned employees.</div>{% endfor %}</div></section></div>
+{% endblock %}

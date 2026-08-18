@@ -1,0 +1,47 @@
+VK_IT_SOLUTIONS/
+├── app.py
+├── config.py
+├── models.py
+├── requirements.txt
+├── .env
+├── .gitignore
+├── README.md
+├── PROJECT_STRUCTURE.txt
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── about.html
+│   ├── services.html
+│   ├── contact.html
+│   ├── auth/
+│   │   ├── owner_login.html
+│   │   ├── manager_login.html
+│   │   └── employee_login.html
+│   ├── owner/
+│   │   ├── dashboard.html
+│   │   ├── managers.html
+│   │   ├── create_manager.html
+│   │   ├── edit_manager.html
+│   │   ├── employees.html
+│   │   ├── create_employee.html
+│   │   └── edit_employee.html
+│   ├── manager/
+│   │   ├── dashboard.html
+│   │   ├── employees.html
+│   │   ├── profile.html
+│   │   └── create_task.html
+│   ├── employee/
+│   │   ├── dashboard.html
+│   │   ├── profile.html
+│   │   └── tasks.html
+│   └── errors/
+│       ├── 400.html
+│       ├── 403.html
+│       ├── 404.html
+│       └── 500.html
+└── static/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── script.js
+    └── images/

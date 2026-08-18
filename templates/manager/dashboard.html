@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Manager Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>MANAGER PANEL</h3><a class="active" href="{{ url_for('manager_dashboard') }}">Dashboard</a><a href="{{ url_for('manager_employees') }}">Employees</a><a href="{{ url_for('manager_profile') }}">My Profile</a><a href="{{ url_for('manager_attendance') }}">Attendance</a><a href="{{ url_for('manager_leaves') }}">Leave Requests</a><a href="{{ url_for('manager_reports') }}">Reports</a></aside>
+<section class="dashboard-main"><div class="dash-head"><div><span class="eyebrow">TEAM CONTROL</span><h1>Manager Dashboard</h1><p>Manage only your assigned employees.</p></div></div>
+<div class="stats-grid"><div class="stat-card"><span>Assigned Employees</span><strong>{{ employees|length }}</strong></div><div class="stat-card"><span>Team Tasks</span><strong>{{ task_count }}</strong></div></div>
+<div class="table-wrap"><table><thead><tr><th>Employee</th><th>Email</th><th>Department</th><th>Status</th><th>Action</th></tr></thead><tbody>{% for e in employees %}<tr><td><strong>{{ e.name }}</strong></td><td>{{ e.email }}</td><td>{{ e.department or '—' }}</td><td>{{ 'Active' if e.is_active else 'Inactive' }}</td><td><a href="{{ url_for('manager_create_task', employee_id=e.id) }}">Create Task</a></td></tr>{% else %}<tr><td colspan="5" class="empty">No assigned employees.</td></tr>{% endfor %}</tbody></table></div>
+</section></div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Employees | Owner{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>OWNER PANEL</h3><a href="{{ url_for('owner_dashboard') }}">Dashboard</a><a href="{{ url_for('owner_managers') }}">Managers</a><a href="{{ url_for('create_manager') }}">Create Manager</a><a class="active" href="{{ url_for('owner_employees') }}">Employees</a><a href="{{ url_for('create_employee') }}">Create Employee</a></aside>
+<section class="dashboard-main">
+<div class="table-head"><div><h1>Employee Management</h1><p>Assign every employee to an active manager.</p></div><a class="btn primary" href="{{ url_for('create_employee') }}">+ Create Employee</a></div>
+<form class="searchbar"><input name="q" value="{{ q }}" placeholder="Search name, Gmail or department"><button class="btn secondary">Search</button></form>
+<div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Department</th><th>Manager</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+{% for e in employees %}<tr><td><strong>{{ e.name }}</strong><small>{{ e.designation or '—' }}</small></td><td>{{ e.email }}</td><td>{{ e.department or '—' }}</td><td>{{ e.manager.name if e.manager else 'Unassigned' }}</td><td><span class="status {{ 'active' if e.is_active else 'inactive' }}">{{ 'Active' if e.is_active else 'Inactive' }}</span></td><td class="actions"><a href="{{ url_for('edit_employee', user_id=e.id) }}">Edit</a>{% if e.is_active %}<form method="post" action="{{ url_for('delete_employee', user_id=e.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="link-danger">Deactivate</button></form>{% else %}<form method="post" action="{{ url_for('activate_employee', user_id=e.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="link-success">Activate</button></form>{% endif %}</td></tr>
+{% else %}<tr><td colspan="6" class="empty">No employees found.</td></tr>{% endfor %}
+</tbody></table></div></section></div>
+{% endblock %}

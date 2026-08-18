@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Employee Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-shell"><aside class="sidebar"><h3>EMPLOYEE PANEL</h3><a class="active" href="{{ url_for('employee_dashboard') }}">Dashboard</a><a href="{{ url_for('employee_tasks') }}">My Tasks</a><a href="{{ url_for('employee_profile') }}">My Profile</a><a href="{{ url_for('employee_attendance') }}">Attendance</a><a href="{{ url_for('employee_payroll') }}">Payroll</a><a href="{{ url_for('employee_leave') }}">Leave Management</a></aside>
+<section class="dashboard-main"><div class="dash-head"><div><span class="eyebrow">MY WORKSPACE</span><h1>Employee Dashboard</h1><p>Welcome, {{ employee.name }}.</p></div></div>
+<div class="card-grid two"><div class="profile-card"><h3>My Profile</h3><p><strong>Email:</strong> {{ employee.email }}</p><p><strong>Department:</strong> {{ employee.department or '—' }}</p><p><strong>Designation:</strong> {{ employee.designation or '—' }}</p><p><strong>Manager:</strong> {{ employee.manager.name if employee.manager else 'Not assigned' }}</p></div>
+<div class="profile-card"><h3>Recent Announcements</h3>{% for a in announcements %}<div class="announcement"><strong>{{ a.title }}</strong><p>{{ a.message }}</p></div>{% else %}<p class="muted">No announcements.</p>{% endfor %}</div></div>
+<h2>Assigned Tasks</h2><div class="table-wrap"><table><thead><tr><th>Task</th><th>Due</th><th>Status</th></tr></thead><tbody>{% for t in tasks %}<tr><td><strong>{{ t.title }}</strong><small>{{ t.description or '' }}</small></td><td>{{ t.due_date or '—' }}</td><td><span class="status {{ t.status }}">{{ t.status.replace('_',' ')|title }}</span></td></tr>{% else %}<tr><td colspan="3" class="empty">No tasks assigned.</td></tr>{% endfor %}</tbody></table></div>
+</section></div>
+{% endblock %}

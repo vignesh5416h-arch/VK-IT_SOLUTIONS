@@ -725,11 +725,7 @@ def initialize_database():
             db.session.commit()
         elif len(owners) > 1:
             raise RuntimeError("Database contains more than one owner. Manual correction is required.")
-        else:
-            owner = owners[0]
-            owner.email = app.config["INITIAL_OWNER_EMAIL"]
-            owner.set_password(app.config["INITIAL_OWNER_PASSWORD"])
-            db.session.commit()
+        
 
 initialize_database()
 if __name__ == "__main__":

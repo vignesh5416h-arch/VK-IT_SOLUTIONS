@@ -20,12 +20,12 @@ class Config:
 
     INITIAL_OWNER_EMAIL = os.getenv(
     "INITIAL_OWNER_EMAIL",
-    "manojaleti222@gmail.com"
+    "owner@gmail.com"
 )
 
 INITIAL_OWNER_PASSWORD = os.getenv(
     "INITIAL_OWNER_PASSWORD",
-    "Manoj@18"
+    "Owner@123"
 )
 INITIAL_OWNER_NAME = os.getenv(
     "INITIAL_OWNER_NAME",

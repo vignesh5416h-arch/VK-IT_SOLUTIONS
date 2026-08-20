@@ -17,6 +17,17 @@ class Config:
     SESSION_COOKIE_SAMESITE = "Lax"
     SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "false").lower() == "true"
 
-    INITIAL_OWNER_EMAIL = os.getenv("INITIAL_OWNER_EMAIL", "owner@gmail.com").strip().lower()
-    INITIAL_OWNER_PASSWORD = os.getenv("INITIAL_OWNER_PASSWORD", "Owner@123")
-    INITIAL_OWNER_NAME = os.getenv("INITIAL_OWNER_NAME", "VK IT Solutions Owner")
+
+    INITIAL_OWNER_EMAIL = os.getenv(
+    "INITIAL_OWNER_EMAIL",
+    "manojaleti222@gmail.com"
+)
+
+INITIAL_OWNER_PASSWORD = os.getenv(
+    "INITIAL_OWNER_PASSWORD",
+    "Manoj@18"
+)
+INITIAL_OWNER_NAME = os.getenv(
+    "INITIAL_OWNER_NAME",
+    "VK IT SOLUTIONS Owner"
+)

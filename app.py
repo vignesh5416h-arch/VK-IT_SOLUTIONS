@@ -726,7 +726,7 @@ def initialize_database():
         elif len(owners) > 1:
             raise RuntimeError("Database contains more than one owner. Manual correction is required.")
 
-
+initialize_database()
 if __name__ == "__main__":
-    initialize_database()
+    
     app.run(host="127.0.0.1", port=5000, debug=os.getenv("FLASK_DEBUG", "false").lower() == "true")
